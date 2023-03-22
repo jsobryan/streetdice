@@ -1,9 +1,9 @@
 import random
 from dataclasses import dataclass
+from time import sleep
 
-def rando():
-    return random.randint(25,50)
 
+###will eventually add logic that will have 'other players' make random bets against the player
 @dataclass
 class Otherplayers:
     bet: random.randint(10,50)
@@ -58,6 +58,7 @@ def gameloop():
             dtotal = d1 + d2
             bet = playerbet()
             print(f'Player rolls a {d1} and a {d2} for a total of {dtotal}')
+            ###This should check if the roll is a win or a loss, and if neither, the total becomes the new 'point' provided it is the first roll after a win or loss.  After the point is set, player will lose if it is rolled before 7 or 11.  subsequent bets will be added to the 'pot' until a win or loss
             if checkroll(dtotal,win):
                 print("You Win!\n")
                 p1.playerbank += bet
@@ -76,41 +77,6 @@ def gameloop():
                 pot += bet
         rolldie()
 
-gameloop()
-
-
-
-        
-
-            
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-
-
+if __name__ == "__main__":
+    gameloop()
 
